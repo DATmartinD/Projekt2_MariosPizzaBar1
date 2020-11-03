@@ -1,4 +1,4 @@
-package MariosPizza;
+package Tools;
 
 public class Statistics {
 }
