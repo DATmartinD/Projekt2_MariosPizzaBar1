@@ -34,6 +34,18 @@ public class PizzaReader {
     }
 
 
+    public int searchForPizza(String name) {
+        ArrayList<Pizza> pizzas = loadMenu();
+
+        for (Pizza element : pizzas) {
+            if (name.equalsIgnoreCase(element.getName())) {
+                return pizzas.indexOf(element);
+            }
+        }
+        return -1;
+    }
+
+
     public void printMenu(){
         ArrayList<Pizza> pizzas = loadMenu();
 
