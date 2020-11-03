@@ -26,8 +26,6 @@ public class Main {
                 double totalPriceOrder = new Order(timeNow, pizzas).totalPrice();
                 pizzaQueue.add(new Order(timeNow,pizzas,totalPriceOrder));
                 break;
-
-
             case 9:
                 return;
 
