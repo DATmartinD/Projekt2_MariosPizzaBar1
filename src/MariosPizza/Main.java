@@ -79,7 +79,7 @@ public class Main {
                     if (brugerSvar.equalsIgnoreCase("y")) {
                         if (pizzaQueue.size() > 0)  {
                             pizzaQueue.remove(0);
-                             break;
+                            break;
                         }
                     }
                     break;
