@@ -1,10 +1,15 @@
 package MariosPizza;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+
 public class Pizza {
     private String name;
     private String[] ingredients;
     private double price;
-    // private boolean familySize;
+    private int numOfPizza;
+    private final int TIME_TO_MAKE_PIZZA = 15;
+
 
 
     public Pizza(String name, String[] ingredients, double price) {
@@ -13,11 +18,14 @@ public class Pizza {
         this.price = price;
     }
 
-    public Pizza(String name, double price) {
+    public Pizza(String name, double price, int numOfPizza) {
         this.name = name;
         this.price = price;
+        this.numOfPizza = numOfPizza;
     }
 
+
+    public String[] getIngredients() {return ingredients;}
 
     public String getName() {return name;}
 
@@ -27,6 +35,19 @@ public class Pizza {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getNumOfPizza() { return numOfPizza;}
+
+    public String ingredientsToString() {
+        String stringIngredients = "";
+        for (int i = 0; i < ingredients.length; i++) {
+            if (i + 1 == ingredients.length)
+                stringIngredients += ingredients[i];
+            else
+                stringIngredients += ingredients[i] + ", ";
+        }
+        return stringIngredients;
     }
 
     public String toString() {
