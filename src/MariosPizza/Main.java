@@ -24,9 +24,13 @@ public class Main {
         }
     }
 
-
-
-
+    void nextOrder() {
+        sortAfterPickUpTime();
+        if (pizzaQueue.size() < 1) {
+            System.out.println("Ingen nuværende ordrer\n");
+        } else
+            pizzaQueue.get(0).showOrder();
+    }
 
     void orderAdder() {
         Order order = new Order();
@@ -45,7 +49,7 @@ public class Main {
     void run() {
         GeneriskMenu menu = new GeneriskMenu("Marios PizzaBar", "Vælg menupunkt: ",
                 new String[]{"1. Se menukort", "2. Indtast bestilling", "3. Vis bestillingskø",
-                        "4. Næste ordre", "9. Exit"});
+                        "4. Næste ordre", "5. Færdiggør ordre",  "9. Exit"});
         boolean run = true;
 
         while (run) {
@@ -66,12 +70,18 @@ public class Main {
                         element.showOrder();
                     break;
                 case 4:
+                    nextOrder();
+                    break;
+                case 5:
                     sortAfterPickUpTime();
-                    if (pizzaQueue.size() < 1) {
-                        System.out.println("Ingen nuværende ordrer\n");
-                        break;
+                    System.out.println("Afslut næste ordre i køen? (y/n)");
+                    String brugerSvar = new Scanner(System.in).nextLine();
+                    if (brugerSvar.equalsIgnoreCase("y")) {
+                        if (pizzaQueue.size() > 0)  {
+                            pizzaQueue.remove(0);
+                             break;
+                        }
                     }
-                    pizzaQueue.get(0).showOrder();
                     break;
 
                 case 9:
