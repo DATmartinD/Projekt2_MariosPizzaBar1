@@ -44,7 +44,8 @@ public class Main {
 
     void run() {
         GeneriskMenu menu = new GeneriskMenu("Marios PizzaBar", "Vælg menupunkt: ",
-                new String[]{"1. Se menukort", "2. Indtast bestilling", "3. Vis bestillingskø", "4. Help", "9. Exit"});
+                new String[]{"1. Se menukort", "2. Indtast bestilling", "3. Vis bestillingskø",
+                        "4. Næste ordre", "9. Exit"});
         boolean run = true;
 
         while (run) {
@@ -60,13 +61,19 @@ public class Main {
                     orderAdder();
                     break;
                 case 3:
-                    if (pizzaQueue.size() > 1)
                     sortAfterPickUpTime();
                     for (Order element : pizzaQueue)
                         element.showOrder();
                     break;
                 case 4:
+                    sortAfterPickUpTime();
+                    if (pizzaQueue.size() < 1) {
+                        System.out.println("Ingen nuværende ordrer\n");
+                        break;
+                    }
+                    pizzaQueue.get(0).showOrder();
                     break;
+
                 case 9:
                     run = false;
                     return;
